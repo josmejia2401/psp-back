@@ -1,0 +1,12 @@
+{
+"lenguajes":[
+                {
+                "Id ": 1,
+                "nombre ": "JAVA"
+                },
+                {
+                "Id ": 2,
+                "nombre ": "C++"
+                }
+            ]
+}

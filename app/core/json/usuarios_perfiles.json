@@ -1,0 +1,11 @@
+[{
+        "UserProfileID": 1,
+        "codigo": "DESJAVASR",
+        "descripcion": "DESARROLLADOR JAVA SR"
+},
+{
+        "UserProfileID": 2,
+        "codigo": "DESJAVAJR",
+        "descripcion": "DESARROLLADOR JAVA JR"
+}
+]

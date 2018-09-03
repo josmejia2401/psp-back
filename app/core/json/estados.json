@@ -1,0 +1,9 @@
+{"estados":[
+            {"id": 1,
+            "codigo ": "AC",
+            "descripcion ": "ACTIVO"},
+            {"id": 2,
+             "codigo ": "I",
+             "descripcion ": "INACTIVO"}
+        ]
+}
