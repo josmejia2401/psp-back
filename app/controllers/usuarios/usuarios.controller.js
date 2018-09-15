@@ -12,7 +12,7 @@ exports.consultarUsuarios = (request, response) => {
 exports.consultarUsuario = (request, response) => {
     Users.findAll({
         where: {
-            UserID: request.params.UserID
+            userid: request.params.userid
         }
       }).then(users => {
         response.send(users);
@@ -23,12 +23,12 @@ exports.consultarUsuario = (request, response) => {
 exports.crearUsuario = (request, response) => {
     var entry = request.body;
     Users.create({  
-        UserID: entry.UserID,
-        UserProfileID: entry.UserProfileID,
-        Name: entry.Name,
-        Instructor : entry.Instructor,
-        Initials : entry.Initials,
-        OrganizationName : entry.OrganizationName,
+        userid: entry.userid,
+        userprofileid: entry.userprofileid,
+        name: entry.name,
+        instructor : entry.instructor,
+        initials : entry.initials,
+        organizationname : entry.organizationname,
         username : entry.username,
         password : entry.password
     }).then(user => {
@@ -39,13 +39,13 @@ exports.crearUsuario = (request, response) => {
 }
 exports.modificarUsuario = (request, response) => {
     var entry = request.body;
-    Users.update({UserProfileID: entry.UserProfileID,
-                  Name: entry.Name,
-                  Instructor : entry.Instructor,
-                  Initials : entry.Initials,
-                  OrganizationName : entry.OrganizationName},
-        {where: {
-            UserID: request.params.UserID
+    Users.update({userprofileid: entry.userprofileid,
+        name: entry.name,
+        instructor : entry.instructor,
+        initials : entry.initials,
+        organizationname : entry.organizationname},
+{where: {
+  userid: request.params.userid
         }}
       ).then(function(rowsUpdated) {
         response.json(rowsUpdated)
@@ -56,7 +56,7 @@ exports.modificarUsuario = (request, response) => {
 exports.eliminarUsuario = (request, response) => {
     Users.destroy({
         where: {
-            UserID: request.params.UserID
+            userid: request.params.userid
         }
       }).then(function  (affectedRows) {
         response.status(response.statusCode).json(affectedRows);

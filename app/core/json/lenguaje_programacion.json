@@ -1,11 +1,11 @@
 {
 "lenguajes":[
                 {
-                "Id ": 1,
+                "id ": 1,
                 "nombre ": "JAVA"
                 },
                 {
-                "Id ": 2,
+                "id ": 2,
                 "nombre ": "C++"
                 }
             ]

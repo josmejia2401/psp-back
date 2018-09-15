@@ -23,12 +23,14 @@ var config = {
             }
         },
         database: {
-            host     : 'localhost',
-            user     : 'dev',
-            password : '1',
-            database : 'mydb',
+            host     : 'ec2-184-72-247-70.compute-1.amazonaws.com',
+            user     : 'qehtkypiapazxj',
+            password : '527a3ab2e0b6fd3d0ac5eb5ad52d0ae6b267b629d1c7994898cb9055cb3d0625',
+            database : 'd199t5s7a0b9gk',
+            port     : '5432',
+            dialect  : "postgres",
             connectionLimit : 100,
-            connectString: 'connectString',
+            connectString: 'postgres://qehtkypiapazxj:527a3ab2e0b6fd3d0ac5eb5ad52d0ae6b267b629d1c7994898cb9055cb3d0625@ec2-184-72-247-70.compute-1.amazonaws.com:5432/d199t5s7a0b9gk',
             connectTimeout  : 60 * 60 * 1000,
             aquireTimeout   : 60 * 60 * 1000,
             timeout         : 60 * 60 * 1000
@@ -47,11 +49,13 @@ var config = {
             secret: 'something.super.secret'
         },
         database: {
-            host     : 'localhost',
-            user     : 'dev',
-            password : '1',
-            database : 'mydb',
-            connectString: 'connectString'
+            host     : 'ec2-184-72-247-70.compute-1.amazonaws.com',
+            user     : 'qehtkypiapazxj',
+            password : '527a3ab2e0b6fd3d0ac5eb5ad52d0ae6b267b629d1c7994898cb9055cb3d0625',
+            database : 'd199t5s7a0b9gk',
+            port     : '5432',
+            dialect  : "postgres",
+            connectString: 'postgres://qehtkypiapazxj:527a3ab2e0b6fd3d0ac5eb5ad52d0ae6b267b629d1c7994898cb9055cb3d0625@ec2-184-72-247-70.compute-1.amazonaws.com:5432/d199t5s7a0b9gk'
         },
         twitter: {
             consumerKey: 'consumer Key',

@@ -1,23 +1,23 @@
 module.exports = (sequelize, Sequelize) => {
-	const USERS = sequelize.define('USERS', {
-	  UserID: {
+	const USERS = sequelize.define('users', {
+	  userid: {
 			type: Sequelize.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
 	  },
-	  UserProfileID: {
+	  userprofileid: {
 		type: Sequelize.INTEGER
 	  },
-	  Name: {
+	  name: {
 		  type: Sequelize.STRING
 		},
-		Instructor: {
+		instructor: {
 		  type: Sequelize.STRING
 		},
-		Initials: {
+		initials: {
 		  type: Sequelize.STRING
 		},
-		OrganizationName: {
+		organizationname: {
 		  type: Sequelize.STRING
 	  },
 		username: {
@@ -32,7 +32,8 @@ module.exports = (sequelize, Sequelize) => {
 		timestamps: false,
 		createdAt: false,
 		createdAt: false,
-		freezeTableName: true
+		freezeTableName: true,
+		tableName : 'users'
 	});
 	return USERS;
 }

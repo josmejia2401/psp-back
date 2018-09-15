@@ -5,7 +5,7 @@ const objects = require("../../core/json/tipos_proyectos.json");
 exports.consultarProyectos = (request, response) => {
     Proyects.findAll({
         where: {
-            UserID: request.params.UserID
+            userid: request.params.userid
         }
       }).then(results => {
         response.send(results);
@@ -20,13 +20,13 @@ exports.crearProyecto = (request, response) => {
     console.log(entry);
     entry.forEach(function (item) {
         Proyects.create({
-                    ProjectTypeID : item.ProjectTypeID,
-                    UserID : item.UserID,
-                    ProcessID : item.ProcessID,
-                    Name : item.Name,
-                    CreatedDate : item.CreatedDate,
-                    StartDate : item.StartDate,
-                    EndDate : item.EndDate
+            projecttypeid : item.projecttypeid,
+            userid : item.userid,
+            processid : item.processid,
+            name : item.name,
+            createddate : item.createddate,
+            startdate : item.startdate,
+            enddate : item.enddate
         }).then(result => {
             results.push(result);
         }).catch(function (err) {
@@ -38,15 +38,15 @@ exports.crearProyecto = (request, response) => {
 }
 exports.modificarProyecto = (request, response) => {
     var entry = request.body;
-    Proyects.update({ProjectTypeID : entry.ProjectTypeID,
-                  UserID : entry.UserID,
-                  ProcessID : entry.ProcessID,
-                  Name : entry.Name,
-                  CreatedDate : entry.CreatedDate,
-                  StartDate : entry.StartDate,
-                  EndDate : entry.EndDate},
+    Proyects.update({projecttypeid : entry.projecttypeid,
+        userid : entry.userid,
+        processid : entry.processid,
+        name : entry.name,
+        createddate : entry.createddate,
+        startdate : entry.startdate,
+        enddate : entry.enddate},
         {
-            where: {ProjectID: request.params.ProjectID}
+            where: {projectid: request.params.projectid}
         }
       ).then(function(rowsUpdated) {
         response.json(rowsUpdated)
@@ -57,7 +57,7 @@ exports.modificarProyecto = (request, response) => {
 exports.eliminarProyecto = (request, response) => {
     Proyects.destroy({
         where: {
-            ProjectID: request.params.ProjectID
+            projectid: request.params.projectid
         }
       }).then(function  (affectedRows) {
         response.status(response.statusCode).json(affectedRows);

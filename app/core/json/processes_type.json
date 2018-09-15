@@ -1,11 +1,11 @@
 [{
-        "ProcessTypeID": 1,
-        "Symbol": "PSP",
-        "descripcion": "Personal Software Process II"
+        "processtypeid": 1,
+        "symbol": "PSP",
+        "description": "Personal Software Process II"
 },
 {
-        "ProcessTypeID": 2,
-        "Symbol": "PSP2",
-        "Description": "Personal Software Process II"
+        "processtypeid": 2,
+        "symbol": "PSP2",
+        "description": "Personal Software Process II"
 }
 ]

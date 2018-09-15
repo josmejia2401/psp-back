@@ -1,11 +1,11 @@
 [{
-        "ProjectTypeID": 1,
-        "Code": "JAVA",
-        "Description": "JAVA"
+        "projecttypeid": 1,
+        "code": "JAVA",
+        "description": "JAVA"
 },
 {
-        "ProjectTypeID": 2,
-        "Code": "C#",
-        "Description": "C#"
+        "projecttypeid": 2,
+        "code": "C#",
+        "description": "C#"
 }
 ]

@@ -3,8 +3,15 @@ const dbConfig = configAll.getDataBase(process.env.NODE_ENV);
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.password, {
   host: dbConfig.host,
-  dialect: 'mysql',
+  dialect: dbConfig.dialect,
+  port: dbConfig.port,
   operatorsAliases: false,
+  ssl : true,
+  dialectOptions:{
+     ssl :{
+        require:true
+     }
+  },
   pool: {
     max: 5,
     min: 0,
