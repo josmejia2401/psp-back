@@ -1,29 +1,29 @@
 module.exports = (sequelize, Sequelize) => {
-	const PROJECTS = sequelize.define('PROJECTS', {
-	  ProjectID: {
+	const PROJECTS = sequelize.define('projects', {
+	  projectid: {
 			type: Sequelize.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
 	  },
-	  ProjectTypeID: {
+	  projecttypeid: {
 		type: Sequelize.INTEGER
 		},
-		UserID: {
+		userid: {
 			type: Sequelize.INTEGER
 		},
-		ProcessID: {
+		processid: {
 				type: Sequelize.INTEGER
 		},
-	  Name: {
+	  name: {
 		  type: Sequelize.STRING
 		},
-		CreatedDate: {
+		createddate: {
 		  type: Sequelize.DATE
 		},
-		StartDate: {
+		startdate: {
 		  type: Sequelize.DATE
 		},
-		EndDate: {
+		enddate: {
 		  type: Sequelize.DATE
 	  }
 	},{
@@ -31,7 +31,8 @@ module.exports = (sequelize, Sequelize) => {
 		timestamps: false,
 		createdAt: false,
 		createdAt: false,
-		freezeTableName: true
+		freezeTableName: true,
+		tableName : 'projects'
 	});
 	return PROJECTS;
 }

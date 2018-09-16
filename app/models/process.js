@@ -1,26 +1,26 @@
 module.exports = (sequelize, Sequelize) => {
-	const PROCESS = sequelize.define('PROCESSES', {
-	  ProcessID: {
+	const PROCESS = sequelize.define('processes', {
+	  processid: {
 			type: Sequelize.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
 	  },
-	  ParentProcessID: {
+	  parentprocessid: {
 		type: Sequelize.INTEGER
 		},
-		ProcessTypeID: {
+		processtypeid: {
 			type: Sequelize.INTEGER
 		},
-	  Symbol: {
+	  symbol: {
 		  type: Sequelize.STRING
 		},
-		Name: {
+		name: {
 		  type: Sequelize.STRING
 		},
-		Purpose: {
+		purpose: {
 		  type: Sequelize.STRING
 		},
-		FormPlanSummary: {
+		formplansummary: {
 		  type: Sequelize.STRING
 		}
 	},{
@@ -28,7 +28,8 @@ module.exports = (sequelize, Sequelize) => {
 		timestamps: false,
 		createdAt: false,
 		createdAt: false,
-		freezeTableName: true
+		freezeTableName: true,
+		tableName : 'processes'
 	});
 	return PROCESS;
 }
