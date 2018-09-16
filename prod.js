@@ -27,7 +27,7 @@ if (cluster.isMaster && _cpus > 1) {
     app.use(bodyParser.json())
     app.use(configAll.sessionAll(config.session));
     app.use('/logs', express.static(__dirname + '/logs'));
-    app.use(cors({origin: 'http://localhost:4200',credentials: true}));
+    //app.use(cors({origin: 'http://localhost:4200',credentials: true}));
     app.use(cors({origin: 'https://psp-front.herokuapp.com',credentials: true}));
    
     require('./app/routes/proyectos/proyectos.routes.js')(app);
