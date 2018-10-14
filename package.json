@@ -13,11 +13,9 @@
   "keywords": [
     "Express",
     "NodeJs",
-    "RestAPI",
-    "MySql",
-    "User"
+    "RestAPI"
   ],
-  "author": "callicoder",
+  "author": "incubo",
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.3",

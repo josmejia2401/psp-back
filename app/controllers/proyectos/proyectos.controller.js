@@ -15,36 +15,17 @@ exports.consultarProyectos = (request, response) => {
 }
 exports.crearProyecto = (request, response) => {
     var entry = request.body;
-    var results = new Array();
-    var errores = new Array();
     console.log(entry);
-    entry.forEach(function (item) {
-        Proyects.create({
-            projecttypeid : item.projecttypeid,
-            userid : item.userid,
-            processid : item.processid,
-            name : item.name,
-            createddate : item.createddate,
-            startdate : item.startdate,
-            enddate : item.enddate
-        }).then(result => {
-            results.push(result);
-        }).catch(function (err) {
-            //response.send(err);
-            errores.push(err);
-        });
+    Proyects.bulkCreate(entry).
+    then(results => {
+        response.send(results);
+    }).catch(function (err) {
+        response.send(err);
     });
-    response.send(results);
 }
 exports.modificarProyecto = (request, response) => {
     var entry = request.body;
-    Proyects.update({projecttypeid : entry.projecttypeid,
-        userid : entry.userid,
-        processid : entry.processid,
-        name : entry.name,
-        createddate : entry.createddate,
-        startdate : entry.startdate,
-        enddate : entry.enddate},
+    Proyects.update(entry,
         {
             where: {projectid: request.params.projectid}
         }
