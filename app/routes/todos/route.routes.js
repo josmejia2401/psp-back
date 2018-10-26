@@ -5,4 +5,6 @@ module.exports = (app) => {
     require('../usuarios/usuarios.routes')(app);
     require('../registrartiempo/registrartiempo.routes')(app);
     require('../fases/fases.routes')(app);
+    require('../registrardefecto/registrardefecto.routes')(app);
+    require('../tipodefecto/tipodefecto.routes')(app);
 }
