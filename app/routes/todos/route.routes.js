@@ -7,4 +7,5 @@ module.exports = (app) => {
     require('../fases/fases.routes')(app);
     require('../registrardefecto/registrardefecto.routes')(app);
     require('../tipodefecto/tipodefecto.routes')(app);
+    require('../registrartfase/registrartfase.routes')(app);
 }
