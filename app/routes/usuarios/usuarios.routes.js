@@ -7,4 +7,4 @@ module.exports = (app) => {
     app.delete('/api/usuarios/eliminar/(:userid)', op.eliminarUsuario);
     app.post('/api/usuarios/validar', op.validarUsuario);
     app.get('/api/usuarios/perfiles', op.consultarPerfiles);
-}
+};

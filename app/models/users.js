@@ -25,7 +25,10 @@ module.exports = (sequelize, Sequelize) => {
 	  },
 		password: {
 		  type: Sequelize.STRING
-	  }
+	  },
+    token: {
+        type: Sequelize.VIRTUAL
+    }
 	},
 	{
 		underscored: false,

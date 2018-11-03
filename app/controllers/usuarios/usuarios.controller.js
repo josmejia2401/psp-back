@@ -1,6 +1,8 @@
 const DB = require('../../core/db/sequelize.db');
 const Users = require('../../models/users')(DB.sequelize, DB.Sequelize);
 const objects = require("../../core/json/usuarios_perfiles.json");
+var jwt = require('jsonwebtoken');
+const configAll = require('../../../config/config');
 
 exports.consultarUsuarios = (request, response) => {
     Users.findAll().then(users => {
@@ -65,7 +67,7 @@ exports.eliminarUsuario = (request, response) => {
         response.send(err);
     });
 }
-exports.validarUsuario = (request, response) => {
+exports.validarUsuario = (request, response) => { 
     var entry = request.body;
     Users.findOne({
         where: {
@@ -73,8 +75,14 @@ exports.validarUsuario = (request, response) => {
             password: entry.password
         }
       }).then(users => {
+          if(users != null){
+            users.password = null;
+            var token = jwt.sign({ usuario: users.username}, configAll.getClaveJwt());
+            users.token = token;
+          }
         response.send(users);
     }).catch(function (err) {
+        console.log(err);
         response.send(err);
     });
 }

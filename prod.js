@@ -3,11 +3,15 @@ const bodyParser = require('body-parser');
 const cors = require('cors')
 const events = require('events');
 const cluster = require('cluster');
+//var jwt = require('jsonwebtoken');
+var expressJwt = require('express-jwt');
 const app = express();
 const configAll = require('./config/config');
 const config = configAll.get(process.env.NODE_ENV, app);
 //const HOST = 'http://localhost:4200';
 const HOST = 'https://psp-front.herokuapp.com';
+console.log(config.jwtClave);
+app.use(expressJwt({secret: configAll.getClaveJwt()}).unless({path: ["/api/usuarios/validar"]}));
 
 var _cpus = require('os').cpus().length;
 console.log('numero de cpus: '+_cpus);

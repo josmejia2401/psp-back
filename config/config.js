@@ -5,6 +5,7 @@ var req;
 var config = {
     
     production: {
+        jwtClave : 'estaeslaclave',
         port : process.env.PORT || 1521,
         session: {
             key: 'the.express.session.id',
@@ -42,6 +43,7 @@ var config = {
         }
     },
     default: {
+        jwtClave : 'estaeslaclave',
         port : process.env.PORT || 1522,
         store : new FileStore(),
         session: {
@@ -79,6 +81,9 @@ var config = {
           return config.default.database;
       }
     return conf.database;
+  }
+  exports.getClaveJwt = function(){
+      return 'estaeslaclave';
   }
 
   exports.PORT = process.env.PORT || 1521;
