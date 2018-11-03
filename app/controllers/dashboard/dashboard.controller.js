@@ -1,14 +1,15 @@
 const DB = require('../../core/db/sequelize.db');
 const Proyects = require('../../models/proyects')(DB.sequelize, DB.Sequelize);
-const objects = require("../../core/json/tipos_proyectos.json");
+const Op = DB.Sequelize.Op
 
-exports.consultarProyectosActivos = (request, response) => {
+exports.consultarProyectosTerminados = (request, response) => {
     Proyects.findAll({
         where: {
             userid: request.params.userid,
-            enddate : {
+            completed : 'S'
+            /*enddate : {
                 ne : null
-            }            
+            } */           
         }
       }).then(results => {
         response.send(results);
@@ -17,11 +18,37 @@ exports.consultarProyectosActivos = (request, response) => {
     });
 }
 
-exports.consultarProyectosInactivos = (request, response) => {
+exports.consultarProyectosArchivados = (request, response) => {
     Proyects.findAll({
         where: {
             userid: request.params.userid,
-            enddate : null          
+            archived : 'S'       
+        }
+      }).then(results => {
+        response.send(results);
+    }).catch(function (err) {
+        response.send(err);
+    });
+}
+
+exports.consultarProyectosEnCurso = (request, response) => {
+    Proyects.findAll({
+        where: {
+            userid: request.params.userid,
+            archived : {[Op.or]: [null,'N']},
+            completed : {[Op.or]: [null,'N']}
+        }
+      }).then(results => {
+        response.send(results);
+    }).catch(function (err) {
+        response.send(err);
+    });
+}
+
+exports.consultarProyectos = (request, response) => {
+    Proyects.findAll({
+        where: {
+            userid: request.params.userid
         }
       }).then(results => {
         response.send(results);
@@ -31,13 +58,71 @@ exports.consultarProyectosInactivos = (request, response) => {
 }
 
 
-exports.consultarProyectosInactivos = (request, response) => {
-    Proyects.findAll({
-        where: {
-            userid: request.params.userid,
-            enddate : null          
-        }
-      }).then(results => {
+exports.consultarTop5 = (request, response) => {
+    DB.sequelize.query('select p.projectid, sum(t.deltatimeminutes) cantidad from projects p,'+
+                       'log_t_detail t '+
+                       'where p.projectid = t.projectid '+
+                       'And p.userid = :userid '+
+                       'group by p.projectid '+
+                       'order by cantidad desc '+
+                       'limit 5', 
+    { replacements: { userid: request.params.userid }, 
+      type: DB.sequelize.QueryTypes.SELECT },
+      { model: Proyects }).then(results => {
+        response.send(results);
+    }).catch(function (err) {
+        response.send(err);
+    });
+}
+
+exports.consultarTop5Fases = (request, response) => {
+    DB.sequelize.query('select p.projectid, t.phaseid, sum(t.deltatimeminutes) cantidad from projects p,'+
+                       'log_t_detail t '+
+                       'where p.projectid = t.projectid '+
+                       'And p.userid = :userid '+
+                       'group by p.projectid, t.phaseid '+
+                       'order by cantidad desc '+
+                       'limit 5', 
+    { replacements: { userid: request.params.userid }, 
+      type: DB.sequelize.QueryTypes.SELECT },
+      { model: Proyects }).then(results => {
+        response.send(results);
+    }).catch(function (err) {
+        response.send(err);
+    });
+}
+
+
+exports.consultarTop5Bugs = (request, response) => {
+    DB.sequelize.query('select t.defecttypeid defectid, d.typename, count(*) cantidad from projects p,'+
+                       'log_d_detail t, '+
+                       'defect_type d '+
+                       'where p.projectid = t.projectid '+
+                       'And p.userid = :userid '+
+                       'And t.defecttypeid = d.defecttypeid '+
+                       'group by t.defecttypeid , d.typename '+
+                       'order by cantidad desc '+
+                       'limit 5', 
+    { replacements: { userid: request.params.userid }, 
+      type: DB.sequelize.QueryTypes.SELECT },
+      { model: Proyects }).then(results => {
+        response.send(results);
+    }).catch(function (err) {
+        response.send(err);
+    });
+}
+
+exports.consultarTop5ProyectosBugs = (request, response) => {
+    DB.sequelize.query('select p.projectid,p.name, count(*) cantidad from projects p,'+
+                       'log_d_detail t '+
+                       'where p.projectid = t.projectid '+
+                       'And p.userid = :userid '+
+                       'group by p.projectid, p.name '+
+                       'order by cantidad desc '+
+                       'limit 5', 
+    { replacements: { userid: request.params.userid }, 
+      type: DB.sequelize.QueryTypes.SELECT },
+      { model: Proyects }).then(results => {
         response.send(results);
     }).catch(function (err) {
         response.send(err);

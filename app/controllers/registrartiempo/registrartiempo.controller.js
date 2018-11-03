@@ -46,3 +46,27 @@ exports.eliminarRegistroTiempo = (request, response) => {
         response.send(err);
     });
 }
+
+exports.consultarTiempoActual = (request, response) => {
+    DB.sequelize.query('SELECT phaseid, sum(deltatimeminutes) deltatimeminutes '+
+    'FROM log_t_detail where projectid = :projectid group by phaseid', 
+    { replacements: { projectid: request.params.projectid }, 
+      type: DB.sequelize.QueryTypes.SELECT },
+      { model: Logs }).then(results => {
+        response.send(results);
+    }).catch(function (err) {
+        response.send(err);
+    });
+}
+
+exports.consultarTiempoAlaFecha = (request, response) => {
+    DB.sequelize.query('SELECT phaseid, sum(deltatimeminutes) deltatimeminutes '+
+    'FROM log_t_detail group by phaseid', 
+    { replacements: { projectid: request.params.projectid }, 
+      type: DB.sequelize.QueryTypes.SELECT },
+      { model: Logs }).then(results => {
+        response.send(results);
+    }).catch(function (err) {
+        response.send(err);
+    });
+}

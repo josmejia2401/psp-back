@@ -4,4 +4,6 @@ module.exports = (app) => {
     app.post('/api/registrartiempo/crear', op.crearRegistroTiempo);
     app.put('/api/registrartiempo/modificar/(:timelogentryid)', op.modificarRegistroTiempo);
     app.delete('/api/registrartiempo/eliminar/(:timelogentryid)', op.eliminarRegistroTiempo);
+    app.get('/api/registrartiempo/consultartactual/(:projectid)', op.consultarTiempoActual);
+    app.get('/api/registrartiempo/consultartafecha', op.consultarTiempoAlaFecha);
 }

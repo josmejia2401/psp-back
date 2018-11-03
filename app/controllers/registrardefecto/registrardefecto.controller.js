@@ -46,3 +46,51 @@ exports.eliminarRegistroDefecto = (request, response) => {
         response.send(err);
     });
 }
+
+exports.consultarDefectoActual = (request, response) => {
+    DB.sequelize.query('SELECT phaseinjectedid, sum(defecttypeid) defecttypeid FROM log_d_detail '+
+                       'where projectid = :projectid group by phaseinjectedid', 
+    { replacements: { projectid: request.params.projectid }, 
+      type: DB.sequelize.QueryTypes.SELECT },
+      { model: Logs }).then(results => {
+        response.send(results);
+    }).catch(function (err) {
+        response.send(err);
+    });
+}
+
+exports.consultarDefectoAlaFecha = (request, response) => {
+    DB.sequelize.query('SELECT phaseinjectedid, sum(defecttypeid) defecttypeid FROM log_d_detail '+
+                       ' group by phaseinjectedid', 
+    { replacements: { projectid: request.params.projectid }, 
+      type: DB.sequelize.QueryTypes.SELECT },
+      { model: Logs }).then(results => {
+        response.send(results);
+    }).catch(function (err) {
+        response.send(err);
+    });
+}
+
+exports.consultarDefectoRemActual = (request, response) => {
+    DB.sequelize.query('SELECT phaseremovedid, sum(fixdefectid) fixdefectid FROM log_d_detail '+
+                       'where projectid = :projectid group by phaseremovedid', 
+    { replacements: { projectid: request.params.projectid }, 
+      type: DB.sequelize.QueryTypes.SELECT },
+      { model: Logs }).then(results => {
+        response.send(results);
+    }).catch(function (err) {
+        response.send(err);
+    });
+}
+
+exports.consultarDefectoRemAlaFecha = (request, response) => {
+    DB.sequelize.query('SELECT phaseremovedid, sum(fixdefectid) fixdefectid FROM log_d_detail '+
+                       ' group by phaseremovedid', 
+    { replacements: { projectid: request.params.projectid }, 
+      type: DB.sequelize.QueryTypes.SELECT },
+      { model: Logs }).then(results => {
+        response.send(results);
+    }).catch(function (err) {
+        response.send(err);
+    });
+}

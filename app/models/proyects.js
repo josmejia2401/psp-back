@@ -25,7 +25,19 @@ module.exports = (sequelize, Sequelize) => {
 		},
 		enddate: {
 		  type: Sequelize.DATE
-	  }
+		},
+		archived: {
+			type: Sequelize.STRING
+		},	
+		completed: {
+		    type: Sequelize.STRING
+   },	
+	 psp0projectid: {
+			 type: Sequelize.INTEGER
+	},	
+	planyield: {
+			type: Sequelize.INTEGER
+ }
 	},{
 		underscored: false,
 		timestamps: false,

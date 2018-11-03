@@ -8,4 +8,5 @@ module.exports = (app) => {
     require('../registrardefecto/registrardefecto.routes')(app);
     require('../tipodefecto/tipodefecto.routes')(app);
     require('../registrartfase/registrartfase.routes')(app);
+    require('../dashboard/dashboard.routes')(app);
 }
