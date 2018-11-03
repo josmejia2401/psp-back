@@ -11,7 +11,7 @@ const config = configAll.get(process.env.NODE_ENV, app);
 //const HOST = 'http://localhost:4200';
 const HOST = 'https://psp-front.herokuapp.com';
 console.log(config.jwtClave);
-app.use(expressJwt({secret: configAll.getClaveJwt()}).unless({path: ["/api/usuarios/validar"]}));
+app.use(expressJwt({secret: configAll.getClaveJwt()}).unless({path: ["/api/usuarios/validar","/api/usuarios/perfiles"]}));
 
 var _cpus = require('os').cpus().length;
 console.log('numero de cpus: '+_cpus);
