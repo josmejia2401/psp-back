@@ -1,7 +1,6 @@
 const DB = require('../../core/db/sequelize.db');
 const Users = require('../../models/users')(DB.sequelize, DB.Sequelize);
 const objects = require("../../core/json/usuarios_perfiles.json");
-var jwt = require('jsonwebtoken');
 const configAll = require('../../../config/config');
 
 exports.consultarUsuarios = (request, response) => {
@@ -67,7 +66,7 @@ exports.eliminarUsuario = (request, response) => {
         response.send(err);
     });
 }
-exports.validarUsuario = (request, response) => { 
+exports.validarUsuario = (request, response, jwt) => { 
     var entry = request.body;
     Users.findOne({
         where: {
@@ -91,4 +90,14 @@ exports.consultarPerfiles = (request, response) => {
     console.log('consultarEstados');
     response.writeHead(200, {"Content-Type": "application/json"});
     response.end(JSON.stringify(objects));
+}
+
+exports.logout = (request, response, blacklist, jwt) => {
+    var auth = request.headers['authorization'];
+    var token = jwt.verify(auth.split(' ')[1], configAll.getClaveJwt());
+    blacklist.revoke(token);
+    blacklist.revoke(token.usuario);
+    blacklist.revoke(token);
+    console.log(token);
+    response.json({success:true, message:"You have been successfully logged out"});
 }
