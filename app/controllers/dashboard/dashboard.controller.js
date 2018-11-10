@@ -59,11 +59,11 @@ exports.consultarProyectos = (request, response) => {
 
 
 exports.consultarTop5 = (request, response) => {
-    DB.sequelize.query('select p.projectid, sum(t.deltatimeminutes) cantidad from projects p,'+
+    DB.sequelize.query('select p.projectid, p.name, sum(t.deltatimeminutes) cantidad from projects p,'+
                        'log_t_detail t '+
                        'where p.projectid = t.projectid '+
                        'And p.userid = :userid '+
-                       'group by p.projectid '+
+                       'group by p.projectid, p.name '+
                        'order by cantidad desc '+
                        'limit 5', 
     { replacements: { userid: request.params.userid }, 
@@ -76,11 +76,13 @@ exports.consultarTop5 = (request, response) => {
 }
 
 exports.consultarTop5Fases = (request, response) => {
-    DB.sequelize.query('select p.projectid, t.phaseid, sum(t.deltatimeminutes) cantidad from projects p,'+
-                       'log_t_detail t '+
+    DB.sequelize.query('select ph.symbol, sum(t.deltatimeminutes) cantidad from projects p,'+
+                       'log_t_detail t, '+
+                       'phases ph '+
                        'where p.projectid = t.projectid '+
                        'And p.userid = :userid '+
-                       'group by p.projectid, t.phaseid '+
+                       'And ph.phaseid = t.phaseid '+
+                       'group by ph.symbol '+
                        'order by cantidad desc '+
                        'limit 5', 
     { replacements: { userid: request.params.userid }, 
