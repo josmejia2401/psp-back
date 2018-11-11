@@ -93,11 +93,14 @@ exports.consultarPerfiles = (request, response) => {
 }
 
 exports.logout = (request, response, blacklist, jwt) => {
-    var auth = request.headers['authorization'];
-    var token = jwt.verify(auth.split(' ')[1], configAll.getClaveJwt());
-    blacklist.revoke(token);
-    blacklist.revoke(token.usuario);
-    blacklist.revoke(token);
-    console.log(token);
-    response.json({success:true, message:"You have been successfully logged out"});
+    try {
+        var auth = request.headers['authorization'];
+        var token = jwt.verify(auth.split(' ')[1], configAll.getClaveJwt());
+        blacklist.revoke(token);
+        blacklist.revoke(token.usuario);
+        blacklist.revoke(token);
+    } catch (error) {
+        console.log(token);
+    }
+    response.json({success:true, message:"Logout exitoso"});
 }
