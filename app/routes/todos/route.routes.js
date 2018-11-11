@@ -9,4 +9,5 @@ module.exports = (app, blacklist, jwt) => {
     require('../tipodefecto/tipodefecto.routes')(app);
     require('../registrartfase/registrartfase.routes')(app);
     require('../dashboard/dashboard.routes')(app);
+    require('../pss/pss.routes')(app);
 }

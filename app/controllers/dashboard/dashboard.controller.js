@@ -6,7 +6,7 @@ exports.consultarProyectosTerminados = (request, response) => {
     Proyects.findAll({
         where: {
             userid: request.params.userid,
-            completed : 'S'
+            completed : 'true'
             /*enddate : {
                 ne : null
             } */           
@@ -22,7 +22,7 @@ exports.consultarProyectosArchivados = (request, response) => {
     Proyects.findAll({
         where: {
             userid: request.params.userid,
-            archived : 'S'       
+            archived : 'true'       
         }
       }).then(results => {
         response.send(results);
@@ -35,8 +35,8 @@ exports.consultarProyectosEnCurso = (request, response) => {
     Proyects.findAll({
         where: {
             userid: request.params.userid,
-            archived : {[Op.or]: [null,'N']},
-            completed : {[Op.or]: [null,'N']}
+            archived : {[Op.or]: [null,'false']},
+            completed : {[Op.or]: [null,'false']}
         }
       }).then(results => {
         response.send(results);
