@@ -1,11 +1,51 @@
 [{
         "userprofileid": 1,
         "codigo": "DESJAVASR",
-        "descripcion": "DESARROLLADOR JAVA SR"
+        "descripcion": "DESARROLLADOR JAVA"
 },
 {
         "userprofileid": 2,
-        "codigo": "DESJAVAJR",
-        "descripcion": "DESARROLLADOR JAVA JR"
+        "codigo": "DESANETJR",
+        "descripcion": "DESARROLLADOR .NET"
+},
+{
+        "userprofileid": 3,
+        "codigo": "DESAPYT",
+        "descripcion": "DESARROLLADOR PYTHON"
+},
+{
+        "userprofileid": 4,
+        "codigo": "DESAC",
+        "descripcion": "DESARROLLADOR C"
+},
+{
+        "userprofileid": 5,
+        "codigo": "DESAPHP",
+        "descripcion": "DESARROLLADOR PHP"
+},
+{
+        "userprofileid": 6,
+        "codigo": "DESAAND",
+        "descripcion": "DESARROLLADOR ANDROID"
+},
+{
+        "userprofileid": 7,
+        "codigo": "DESAAPP",
+        "descripcion": "DESARROLLADOR APPLE"
+},
+{
+        "userprofileid": 8,
+        "codigo": "DESANODE",
+        "descripcion": "DESARROLLADOR NODEJS"
+},
+{
+        "userprofileid": 9,
+        "codigo": "DESAC++",
+        "descripcion": "DESARROLLADOR C++"
+},
+{
+        "userprofileid": 10,
+        "codigo": "DESAANG",
+        "descripcion": "DESARROLLADOR ANGULAR"
 }
 ]
