@@ -1,8 +1,8 @@
 const DB = require('../../core/db/sequelize.db');
-const Logs = require('../../models/pss')(DB.sequelize, DB.Sequelize);
+const Table = require('../../models/programsize')(DB.sequelize, DB.Sequelize);
 
 exports.consultarPss = (request, response) => { 
-    Logs.findAll({ 
+    Table.findAll({ 
         where: {
             projectid: request.params.projectid
         }
@@ -15,7 +15,7 @@ exports.consultarPss = (request, response) => {
 exports.crearPss = (request, response) => {
     var entry = request.body;
     console.log(entry);
-    Logs.bulkCreate(entry).
+    Table.bulkCreate(entry).
     then(results => {
         response.send(results);
     }).catch(function (err) {
@@ -24,7 +24,7 @@ exports.crearPss = (request, response) => {
 }
 exports.modificarPss = (request, response) => {
     var entry = request.body;
-    Logs.update(entry,
+    Table.update(entry,
         {
             where: {programsizeid: request.params.programsizeid}
         }
@@ -35,7 +35,7 @@ exports.modificarPss = (request, response) => {
       });
 }
 exports.eliminarPss = (request, response) => {
-    Logs.destroy({
+    Table.destroy({
         where: {
             programsizeid: request.params.programsizeid
         }
@@ -53,7 +53,19 @@ exports.consultarActualFecha = (request, response) => {
                        '  Sum(todatenr) todatenr from program_size where userid = :userid', 
     { replacements: { userid: request.params.userid }, 
       type: DB.sequelize.QueryTypes.SELECT },
-      { model: Logs }).then(results => {
+      { model: Table }).then(results => {
+        response.send(results);
+    }).catch(function (err) {
+        response.send(err);
+    });
+}
+
+
+exports.consultarMaxPs = (request, response) => {
+    DB.sequelize.query('select Max(coalesce(programsizeallid, 0)) programsizeallid from program_size where userid = :userid', 
+    { replacements: { userid: request.params.userid }, 
+      type: DB.sequelize.QueryTypes.SELECT },
+      { model: Table }).then(results => {
         response.send(results);
     }).catch(function (err) {
         response.send(err);

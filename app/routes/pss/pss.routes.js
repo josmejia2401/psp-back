@@ -5,4 +5,5 @@ module.exports = (app) => {
     app.put('/api/registrarpss/modificar/(:programsizeid)', op.modificarPss);
     app.delete('/api/registrarpss/eliminar/(:programsizeid)', op.eliminarPss);
     app.get('/api/registrarpss/consultar/actualfecha/(:userid)', op.consultarActualFecha);
+    app.get('/api/registrarpss/consultar/maxpss/(:userid)', op.consultarMaxPs);
 }

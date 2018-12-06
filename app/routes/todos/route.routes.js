@@ -10,4 +10,7 @@ module.exports = (app, blacklist, jwt) => {
     require('../registrartfase/registrartfase.routes')(app);
     require('../dashboard/dashboard.routes')(app);
     require('../pss/pss.routes')(app);
+    require('../set/set.routes')(app);
+    require('../part/part.routes')(app);
+    require('../part/part_type_standard.routes')(app);
 }

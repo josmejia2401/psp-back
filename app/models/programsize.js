@@ -212,6 +212,15 @@ module.exports = (sequelize, Sequelize) => {
 		userid: {
 			type: Sequelize.INTEGER
 		},
+		name: {
+			type: Sequelize.STRING
+		},
+		idparts: {
+			type: Sequelize.INTEGER
+		},
+		programsizeallid: {
+			type: Sequelize.INTEGER
+		}
 	}, {
 			underscored: false,
 			timestamps: false,
