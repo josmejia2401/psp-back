@@ -5,7 +5,10 @@ exports.consultarPss = (request, response) => {
     Table.findAll({ 
         where: {
             projectid: request.params.projectid
-        }
+        },
+        order: [
+            ['idparts', 'ASC']
+        ],
       }).then(results => {
         response.send(results);
     }).catch(function (err) {

@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
-	const SET_BASE = sequelize.define('set_base', {
-		setbaseid: {
+	const SET_ADD = sequelize.define('set_add', {
+		setaddid: {
 			type: Sequelize.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
@@ -21,35 +21,43 @@ module.exports = (sequelize, Sequelize) => {
 			type: Sequelize.INTEGER,
 			allowNull: true
 		},
-		planb : {
+		loctypeid : {
 			type: Sequelize.INTEGER,
 			allowNull: true
 		},
-		planm : {
+		parttypestandardi : {
 			type: Sequelize.INTEGER,
 			allowNull: true
 		},
-		pland : {
+		name : {
+			type: Sequelize.STRING,
+			allowNull: true
+		},
+		methods : {
 			type: Sequelize.INTEGER,
 			allowNull: true
 		},
-		planba : {
+		relsize : {
+			type: Sequelize.STRING,
+			allowNull: true
+		},
+		planap : {
 			type: Sequelize.INTEGER,
 			allowNull: true
 		},
-		actualb : {
+		plannewreuseflag : {
+			type: Sequelize.STRING,
+			allowNull: true
+		},
+		actualap : {
 			type: Sequelize.INTEGER,
 			allowNull: true
 		},
-		actualm: {
-			type: Sequelize.INTEGER,
+		actualnewreusefla : {
+			type: Sequelize.STRING,
 			allowNull: true
 		},
-		actuald : {
-			type: Sequelize.INTEGER,
-			allowNull: true
-		},
-		actualba : {
+		actualmethods : {
 			type: Sequelize.INTEGER,
 			allowNull: true
 		}
@@ -59,7 +67,7 @@ module.exports = (sequelize, Sequelize) => {
 		createdAt: false,
 		createdAt: false,
 		freezeTableName: true,
-		tableName : 'set_base'
+		tableName : 'set_add'
 	});
-	return SET_BASE;
+	return SET_ADD;
 }

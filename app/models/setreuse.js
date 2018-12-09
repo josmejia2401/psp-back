@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
-	const SET_BASE = sequelize.define('set_base', {
-		setbaseid: {
+	const SET_REUSE = sequelize.define('set_reuse', {
+		setreuseid: {
 			type: Sequelize.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
@@ -21,35 +21,11 @@ module.exports = (sequelize, Sequelize) => {
 			type: Sequelize.INTEGER,
 			allowNull: true
 		},
-		planb : {
+		planr : {
 			type: Sequelize.INTEGER,
 			allowNull: true
 		},
-		planm : {
-			type: Sequelize.INTEGER,
-			allowNull: true
-		},
-		pland : {
-			type: Sequelize.INTEGER,
-			allowNull: true
-		},
-		planba : {
-			type: Sequelize.INTEGER,
-			allowNull: true
-		},
-		actualb : {
-			type: Sequelize.INTEGER,
-			allowNull: true
-		},
-		actualm: {
-			type: Sequelize.INTEGER,
-			allowNull: true
-		},
-		actuald : {
-			type: Sequelize.INTEGER,
-			allowNull: true
-		},
-		actualba : {
+		actualr : {
 			type: Sequelize.INTEGER,
 			allowNull: true
 		}
@@ -59,7 +35,7 @@ module.exports = (sequelize, Sequelize) => {
 		createdAt: false,
 		createdAt: false,
 		freezeTableName: true,
-		tableName : 'set_base'
+		tableName : 'set_reuse'
 	});
-	return SET_BASE;
+	return SET_REUSE;
 }

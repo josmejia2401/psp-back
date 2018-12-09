@@ -13,4 +13,7 @@ module.exports = (app, blacklist, jwt) => {
     require('../set/set.routes')(app);
     require('../part/part.routes')(app);
     require('../part/part_type_standard.routes')(app);
+    require('../set/setadd.routes')(app);
+    require('../set/setreuse.routes')(app);
+    require('../part/part_type.routes')(app);
 }

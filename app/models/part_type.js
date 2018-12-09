@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
-	const PART_TYPE_STANDARD = sequelize.define('part_type_standard', {
-	  parttypestandardi : {
+	const PART_TYPE = sequelize.define('part_type', {
+		parttypeid: {
 			type: Sequelize.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
@@ -18,23 +18,23 @@ module.exports = (sequelize, Sequelize) => {
 			allowNull: true
 		},
 		vs : {
-			type: Sequelize.DECIMAL,
+			type: Sequelize.DOUBLE,
 			allowNull: true
 		},
 		s : {
-			type: Sequelize.DECIMAL,
+			type: Sequelize.DOUBLE,
 			allowNull: true
 		},
 		m : {
-			type: Sequelize.DECIMAL,
+			type: Sequelize.DOUBLE,
 			allowNull: true
 		},
 		l : {
-			type: Sequelize.DECIMAL,
+			type: Sequelize.DOUBLE,
 			allowNull: true
 		},
 		vl : {
-			type: Sequelize.DECIMAL,
+			type: Sequelize.DOUBLE,
 			allowNull: true
 		}
 	},{
@@ -43,7 +43,7 @@ module.exports = (sequelize, Sequelize) => {
 		createdAt: false,
 		createdAt: false,
 		freezeTableName: true,
-		tableName : 'part_type_standard'
+		tableName : 'part_type'
 	});
-	return PART_TYPE_STANDARD;
+	return PART_TYPE;
 }
